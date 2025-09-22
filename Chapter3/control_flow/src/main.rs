@@ -1,27 +1,25 @@
-fn less_than_five(number : u32) {
+fn less_than_five(number: u32) {
     if number < 5 {
         println!("The number is less than 5!");
-    }
-    else {
+    } else {
         println!("The number is greater than or equal to 5!");
     }
 }
 
-fn fahrenheit_to_celsius(degrees : u32) -> u32{
-    return (degrees - 32) * 5 / 9; 
+fn fahrenheit_to_celsius(degrees: u32) -> u32 {
+    return (degrees - 32) * 5 / 9;
 }
 
-fn celsius_to_fahrenheit(degrees : u32) -> u32 {
+fn celsius_to_fahrenheit(degrees: u32) -> u32 {
     return (degrees + 32) * 9 / 5;
 }
 
-fn gen_fib(idx : u32) -> u32 {
+fn gen_fib(idx: u32) -> u32 {
     let mut two_before = 1;
     let mut prev = 1;
     if idx == 1 || idx == 2 {
         return prev;
-    }
-    else {
+    } else {
         let mut curr = 2;
         let mut tmp = 0;
         let mut curr_idx = 3;
@@ -37,9 +35,9 @@ fn gen_fib(idx : u32) -> u32 {
 
 fn main() {
     let five = 5;
-    less_than_five(five); 
+    less_than_five(five);
     let four = 4;
-    less_than_five(four); 
+    less_than_five(four);
 
     // Rust can't evaluate u32 as a boolean!
     // if five {
@@ -48,17 +46,15 @@ fn main() {
 
     if five < 5 {
         println!("Five is less than five hmmmm");
-    }
-    else if five > 5 {
+    } else if five > 5 {
         println!("Five is greater than five hmmm");
-    }
-    else {
+    } else {
         println!("Five is equal to five!");
     }
 
     // If statements can be rvalues!
     let year = 2004;
-    let num_days_in_feb = if year % 4 == 0 {29} else {28};
+    let num_days_in_feb = if year % 4 == 0 { 29 } else { 28 };
     println!("Days in February, 2004: {num_days_in_feb}");
 
     // Loop loop
@@ -67,8 +63,7 @@ fn main() {
         if counter < 5 {
             println!("Counter is: {counter}");
             counter += 1;
-        }
-        else {
+        } else {
             break counter;
         }
     };
@@ -76,7 +71,7 @@ fn main() {
 
     // Loop labels:
     counter = 0;
-    'outer_loop : loop {
+    'outer_loop: loop {
         loop {
             counter += 1;
             if counter >= 50 {
@@ -87,7 +82,7 @@ fn main() {
         counter += 10;
     }
 
-    // While loops 
+    // While loops
     let nums = [1, 2, 3, 4];
     let mut idx = 0;
     let mut curr_elem = 0;
@@ -121,17 +116,16 @@ fn main() {
     let song = loop {
         if idx == 0 {
             break christmas_song;
-        }
-        else {
+        } else {
             christmas_song.push_str(match idx {
                 4 => "On the first day of Christmas my true love gave to me\n",
                 3 => "Three French hens\n",
                 2 => "Two turtle doves\n",
                 1 => "And a partridge in a pear tree\n",
-                _ => ""});    
+                _ => "",
+            });
         }
         idx -= 1;
     };
     println!("Song: {song}");
 }
-

@@ -8,7 +8,7 @@ fn main() {
         println!("The value of x (inner scope) is: {x}");
     }
     println!("After that scope is left, the value of x is: {x}");
-    
+
     // Disallowed due to type mutation:
     // let mut spaces = "   ";
     let spaces = "   ";

@@ -3,11 +3,14 @@ fn main() {
     another_function(5);
     measurement_function(32, 'C');
 
-    let x = {let y = 3; y + 1};
+    let x = {
+        let y = 3;
+        y + 1
+    };
     let five = return_five();
     let six = incr(five);
     println!("Variable six: {six}");
-    
+
     /*
     This is a multiline comment!
     */
@@ -23,11 +26,11 @@ fn return_five() -> u32 {
     5
 }
 
-fn measurement_function(temp : u32, units : char) {
+fn measurement_function(temp: u32, units: char) {
     println!("The temperature is {temp} degrees {units}");
 }
 
-fn another_function(i : u32) {
+fn another_function(i: u32) {
     println!("Wow, another function!");
     println!("Input is: {i}");
 }
