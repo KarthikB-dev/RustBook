@@ -10,7 +10,7 @@ fn main() {
     let immutable_reference = &greeting;
     let mutable_reference = &mut greeting;
     // Disallowed because a mutable reference
-    // was defined before - we don't know if 
+    // was defined before - we don't know if
     // that reference will modify the output
     // we're expecting
     // println!("{immutable_reference}");
@@ -18,11 +18,11 @@ fn main() {
     println!("{dangling_reference_avoider}");
 }
 
-fn borrow(s : &String) -> &String {
+fn borrow(s: &String) -> &String {
     return s;
 }
 
-fn transfer_ownership(s : String) {
+fn transfer_ownership(s: String) {
     println!("s: {s}");
 }
 

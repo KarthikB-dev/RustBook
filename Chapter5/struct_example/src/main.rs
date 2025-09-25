@@ -11,7 +11,7 @@ impl Rectangle {
     fn width(&self) -> bool {
         return self.width > 0;
     }
-    fn can_hold(&self, other : &Rectangle) -> bool {
+    fn can_hold(&self, other: &Rectangle) -> bool {
         return self.width >= other.width && self.height >= other.height;
     }
 }
@@ -25,7 +25,10 @@ fn main() {
     let hw_tuple = (2, 3);
     rect_area = tuple_area(hw_tuple);
     println!("{rect_area}");
-    let rectangle1 = Rectangle{width: 2, height: 3};
+    let rectangle1 = Rectangle {
+        width: 2,
+        height: 3,
+    };
     rect_area = struct_area(&rectangle1);
     println!("{rect_area}");
     // Won't work if a string representation hasn't been defined
@@ -41,7 +44,10 @@ fn main() {
     rect_area = rectangle1.area();
     println!("{rect_area}");
 
-    let rectangle2 = Rectangle{width: 4, height : 5};
+    let rectangle2 = Rectangle {
+        width: 4,
+        height: 5,
+    };
     let rect2_bigger = rectangle2.can_hold(&rectangle1);
     println!("{rect2_bigger}");
 }
