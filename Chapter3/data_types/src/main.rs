@@ -14,7 +14,7 @@ fn main() {
     let second = x.1;
     let third = x.2;
     // Array
-    let a: [i32, 5] = [1, 2, 3, 4, 5];
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
     // Three instances of one 
     let b = [1; 3];
     let first = a[1];

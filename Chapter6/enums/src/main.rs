@@ -43,9 +43,9 @@ fn nested_describe_state_quarter(coin : Coin) -> Option<String> {
 }
 
 fn describe_state_quarter(coin : Coin) -> Option<String> {
-    if let Coin::Quarter(state) = coin else {
+    let Coin::Quarter(state) = coin else {
        return None;
-    }
+    };
     if state.existed_in(1900) {
         Some(format!("{state:?} is decently old!"))
     } else {
