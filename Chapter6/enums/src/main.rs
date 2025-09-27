@@ -8,6 +8,16 @@ enum UsState {
     Washington,
 }
 
+impl UsState {
+    fn existed_in(&self, year : u16) -> bool {
+        match self {
+            UsState::Alabama => year >= 1819,
+            UsState::California => year >= 1850,
+            _ => year >= 1959,
+        }
+    }
+}
+
 enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
@@ -18,6 +28,29 @@ enum Coin {
     Nickel,
     Dime,
     Quarter(UsState),
+}
+
+fn nested_describe_state_quarter(coin : Coin) -> Option<String> {
+    if let Coin::Quarter(state) = coin {
+        if state.existed_in(1900) {
+            Some(format!("{state:?} is decently old!"))
+        } else {
+            Some(format!("Wow, {state:?} is pretty young!"))
+        }
+    } else {
+        None
+    }
+}
+
+fn describe_state_quarter(coin : Coin) -> Option<String> {
+    if let Coin::Quarter(state) = coin else {
+       return None;
+    }
+    if state.existed_in(1900) {
+        Some(format!("{state:?} is decently old!"))
+    } else {
+        Some(format!("Wow, {state:?} is pretty young!"))
+    }
 }
 
 fn plus_one(x : Option<i32>) -> Option<i32> {
