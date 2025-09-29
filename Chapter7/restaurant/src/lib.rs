@@ -1,7 +1,9 @@
 use std::fmt::Result;
 use std::fmt;
-use std::io::{self, write};
+use std::io::{self, Write};
 use std::collections::*;
+
+mod front_of_house;
 
 fn function1() -> fmt::Result {
     return Ok(());
@@ -9,18 +11,6 @@ fn function1() -> fmt::Result {
 
 fn function2() -> io::Result<()> {
     return Ok(());
-}
-
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-        fn seat_at_table() {}
-    }
-    mod serving {
-        fn take_order() {}
-        fn serve_order() {}
-        fn take_payment() {}
-    }
 }
 
 use crate::front_of_house::hosting::add_to_waitlist;
