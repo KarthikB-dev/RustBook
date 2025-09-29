@@ -1,12 +1,33 @@
+use std::fmt::Result;
+use std::fmt;
+use std::io::{self, write};
+use std::collections::*;
+
+fn function1() -> fmt::Result {
+    return Ok(());
+}
+
+fn function2() -> io::Result<()> {
+    return Ok(());
+}
+
 mod front_of_house {
-    mod hosting {
-        fn add_to_waitlist() {}
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
         fn seat_at_table() {}
     }
     mod serving {
         fn take_order() {}
         fn serve_order() {}
         fn take_payment() {}
+    }
+}
+
+use crate::front_of_house::hosting::add_to_waitlist;
+
+mod customer {
+    pub fn eat_at_restaurant() {
+        super::add_to_waitlist();
     }
 }
 
