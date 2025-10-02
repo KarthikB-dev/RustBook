@@ -52,4 +52,31 @@ fn main() {
     for curr in &v {
         println!("{curr}");
     }
+
+    // Doesn't work because vectors don't use the display trait 
+    // and consequently can't have .to_string() called
+    // println!("{v}");
+
+    // Strings are UTF-8 encoded, so Telugu works!
+    let mut curry_leaf = String::from("కరివేపాకు");
+    println!("{curry_leaf}");
+    // We can combine two strings using push_str
+    let chutney = String::from(" పచ్చడి");
+    // We need a reference here, because taking ownership
+    // wouldn't let us print it on line 68
+    let mut curry_leaf_chutney = String::from(curry_leaf.clone());
+    curry_leaf_chutney.push_str(&chutney);
+    println!("{curry_leaf_chutney}");
+
+    let mut plus_chutney = curry_leaf.clone() + &chutney;
+    println!("{plus_chutney}");
+
+    let s = format!("{curry_leaf}-{curry_leaf_chutney}-{plus_chutney}");
+    println!("{s}");
+
+    let ccl_letters = curry_leaf_chutney.chars();
+    for letter in ccl_letters {
+        print!("{letter}");
+    }
+    println!("");
 }
