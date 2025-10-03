@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+// 
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     v = vec![1, 2, 3];
@@ -79,4 +81,34 @@ fn main() {
         print!("{letter}");
     }
     println!("");
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    // Overwriting a value
+    scores.insert(String::from("Blue"), 20);
+    scores.insert(String::from("Yellow"), 15);
+
+    // Insert if it doesn't exist
+    scores.entry(String::from("Blue")).or_insert(30);
+
+    let team_name = String::from("Blue");
+    // Copied makes it not a reference, and unwrap sets the 
+    // score to 0 if the key doesn't exist
+    let score = scores.get(&team_name).copied().unwrap_or(0);
+
+    for (key, value) in &scores {
+        println!("{key}, {value}");
+    }
+
+    let text = "The word 'the' appears only once";
+
+    let mut freqs = HashMap::new();
+
+    for word in text.split_whitespace() {
+        // Frequency of the current word 
+        let count = freqs.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{freqs:?}");
 }
