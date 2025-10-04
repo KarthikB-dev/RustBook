@@ -1,4 +1,23 @@
+#![allow(unused)]
 use std::collections::HashMap;
+
+fn vector_mode(vect : &Vec<i32>) -> Option<Option<&i32>> {
+    if vect.len() == 0 {
+        return None;
+    }
+    let mut freqs = HashMap::new();
+    let mut max_freq = 0;
+    let mut mode = Some(vect.get(0));
+    for curr in vect {
+        let count = freqs.entry(curr).or_insert(0);
+        *count += 1;
+        if *count > max_freq {
+            max_freq = *count;
+            mode = Some(Some(curr));
+        }
+    }
+    return mode;
+}
  
 fn main() {
     let mut v: Vec<i32> = Vec::new();
@@ -7,7 +26,11 @@ fn main() {
     v.push(5);
     v.push(6);
     v.push(7);
+    v.push(7);
     let third: &i32 = &v[2];
+
+    let mode = vector_mode(&v);
+    println!("{mode:?}");
     // panics because it tries to access an out of bounds
     // array index
     // let dne_panic = v[100];
@@ -60,7 +83,7 @@ fn main() {
     // println!("{v}");
 
     // Strings are UTF-8 encoded, so Telugu works!
-    let mut curry_leaf = String::from("కరివేపాకు");
+    let curry_leaf = String::from("కరివేపాకు");
     println!("{curry_leaf}");
     // We can combine two strings using push_str
     let chutney = String::from(" పచ్చడి");
@@ -70,7 +93,7 @@ fn main() {
     curry_leaf_chutney.push_str(&chutney);
     println!("{curry_leaf_chutney}");
 
-    let mut plus_chutney = curry_leaf.clone() + &chutney;
+    let plus_chutney = curry_leaf.clone() + &chutney;
     println!("{plus_chutney}");
 
     let s = format!("{curry_leaf}-{curry_leaf_chutney}-{plus_chutney}");
