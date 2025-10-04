@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-// 
+ 
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     v = vec![1, 2, 3];
