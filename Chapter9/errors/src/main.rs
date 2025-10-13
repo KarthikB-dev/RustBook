@@ -1,6 +1,6 @@
-use std::io::{self, Read};
 use std::error::Error;
 use std::fs::File;
+use std::io::{self, Read};
 
 // enum Result<T, E> {
 //     Ok(T),

@@ -58,12 +58,15 @@ fn main() {
     let result = largest(&char_list);
     println!("The largest number is: {result}");
 
-    let int_point = Point {x: 4, y: 5};
+    let int_point = Point { x: 4, y: 5 };
     println!("int_point.x = {}", int_point.x());
-    let mixed_point = MixedPoint {x: 4, y: 5.45};
+    let mixed_point = MixedPoint { x: 4, y: 5.45 };
 
-    let f32_point = Point {x: 1.414, y: 1.732};
-    println!("f32_point origin distance = {}", f32_point.distance_from_origin());
+    let f32_point = Point { x: 1.414, y: 1.732 };
+    println!(
+        "f32_point origin distance = {}",
+        f32_point.distance_from_origin()
+    );
 
     let integer = Some(32);
     let float = Some(32.5);

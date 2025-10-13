@@ -1,7 +1,7 @@
-use std::fmt::Result;
-use std::fmt;
-use std::io::{self, Write};
 use std::collections::*;
+use std::fmt;
+use std::fmt::Result;
+use std::io::{self, Write};
 
 mod front_of_house;
 

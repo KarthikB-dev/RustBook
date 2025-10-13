@@ -1,7 +1,7 @@
 #![allow(unused)]
 use std::collections::HashMap;
 
-fn vector_mode(vect : &Vec<i32>) -> Option<Option<&i32>> {
+fn vector_mode(vect: &Vec<i32>) -> Option<Option<&i32>> {
     if vect.len() == 0 {
         return None;
     }
@@ -18,7 +18,7 @@ fn vector_mode(vect : &Vec<i32>) -> Option<Option<&i32>> {
     }
     return mode;
 }
- 
+
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     v = vec![1, 2, 3];
@@ -78,7 +78,7 @@ fn main() {
         println!("{curr}");
     }
 
-    // Doesn't work because vectors don't use the display trait 
+    // Doesn't work because vectors don't use the display trait
     // and consequently can't have .to_string() called
     // println!("{v}");
 
@@ -115,7 +115,7 @@ fn main() {
     scores.entry(String::from("Blue")).or_insert(30);
 
     let team_name = String::from("Blue");
-    // Copied makes it not a reference, and unwrap sets the 
+    // Copied makes it not a reference, and unwrap sets the
     // score to 0 if the key doesn't exist
     let score = scores.get(&team_name).copied().unwrap_or(0);
 
@@ -128,7 +128,7 @@ fn main() {
     let mut freqs = HashMap::new();
 
     for word in text.split_whitespace() {
-        // Frequency of the current word 
+        // Frequency of the current word
         let count = freqs.entry(word).or_insert(0);
         *count += 1;
     }
