@@ -18,14 +18,34 @@ pub fn add_two(num: u64) -> u64 {
     num + 2
 }
 
+pub fn greeting(name: &str) -> String {
+    // format!("Hello")
+    format!("Hello, {name}!")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
+    fn greeting_contains_name() {
+        let result = greeting("Carol");
+        assert!(
+            result.contains("Carol"),
+            "Greeting did not contain name, value was {result}"
+        );
+    }
+
+    #[test]
+    fn it_works() -> Result<(), String> {
         let result = add(2, 3);
-        assert_eq!(result, 5);
+
+        if result == 5 {
+            Ok(())
+        }
+        else {
+            Err(String::from("two plus three does not equal five"))
+        }
     }
 
     // #[test]
