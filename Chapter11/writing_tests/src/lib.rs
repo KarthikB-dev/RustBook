@@ -42,8 +42,7 @@ mod tests {
 
         if result == 5 {
             Ok(())
-        }
-        else {
+        } else {
             Err(String::from("two plus three does not equal five"))
         }
     }
