@@ -2,4 +2,4 @@
 My work on the Rust book!
 
 # What is My Long Term Goal With This?
-A hangman game in Rust!
+A multiplayer hangman game in Rust!
