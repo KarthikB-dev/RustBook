@@ -1,13 +1,13 @@
+use minigrep::search;
 use std::env;
+use std::error::Error;
 use std::fs;
 use std::process;
-use std::error::Error;
-use minigrep::search;
 
 fn main() {
     // We don't import args directly because
     // that variable might be used elsewhere.
-    // Note that you should use args_os if 
+    // Note that you should use args_os if
     // you want to read in unicode characters
     let args: Vec<String> = env::args().collect();
 
@@ -20,7 +20,6 @@ fn main() {
         println!("Application error: {e}");
         process::exit(1);
     }
-
 }
 
 fn run(config: Config) -> Result<(), Box<dyn Error>> {
@@ -46,6 +45,9 @@ impl Config {
         let query = args[1].clone();
         let file_path = args[2].clone();
 
-        Ok(Config {query : query, file_path : file_path})
+        Ok(Config {
+            query: query,
+            file_path: file_path,
+        })
     }
 }
