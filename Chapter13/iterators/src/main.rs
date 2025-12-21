@@ -1,0 +1,43 @@
+pub trait Iterator {
+    type Item;
+
+    fn next(&mut self) -> Option<Self::Item>;
+}
+
+#[test]
+fn iterator_closure() {
+    let v1: Vec<i32> = vec![1, 2, 3];
+    // We need to call collect on the iterator because
+    // Rust iterators are lazy!
+    let v2: Vec<i32> = v1.iter().map(|x| x + 1).collect();
+    assert_eq!(vec![2, 3, 4], v2);
+}
+
+#[test]
+fn iterator_sum() {
+    let v1 = vec![1, 2, 3];
+    let v1_iter = v1.iter();
+
+    let total: i32 = v1_iter.sum();
+    assert_eq!(total, 6);
+}
+
+#[test]
+fn iterator_demonstrator() {
+    let v1 = vec![1, 2, 3];
+    let mut v1_iter = v1.iter();
+
+    assert_eq!(v1_iter.next(), Some(&1));
+    assert_eq!(v1_iter.next(), Some(&2));
+    assert_eq!(v1_iter.next(), Some(&3));
+    assert_eq!(v1_iter.next(), None);
+}
+
+fn main() {
+    let v1 = vec![1, 2, 3];
+    let v1_iter = v1.iter();
+
+    for val in v1_iter {
+        println!("Current value: {val}");
+    }
+}
