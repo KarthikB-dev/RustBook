@@ -4,8 +4,10 @@ opt-level=0
 opt-level=3
 
 [package]
-name = "ch14"
+name = "ch14_karthik"
 version = "0.1.0"
 edition = "2024"
+description = "Karthik implementation of ch14!"
+license = "MIT"
 
 [dependencies]

@@ -1,3 +1,8 @@
+use ch14_karthik::PrimaryColor;
+use ch14_karthik::mix;
+
 fn main() {
-    println!("Hello, world!");
+	let red = PrimaryColor::Red;
+	let yellow = PrimaryColor::Yellow;
+	mix(red, yellow);
 }
