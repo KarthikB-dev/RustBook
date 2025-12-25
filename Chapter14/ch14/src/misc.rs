@@ -1,7 +1,7 @@
 //! # Ch14_karthik
-//! 
-//! `ch14_karthik` is the (rather poor) name of our crate! 
-//! it's used for basic arithmetic. It might help 
+//!
+//! `ch14_karthik` is the (rather poor) name of our crate!
+//! it's used for basic arithmetic. It might help
 //! your kids learn 1+1.
 
 /// Adds one to the number given
@@ -14,5 +14,5 @@
 /// assert_eq!(6, answer);
 /// ```
 pub fn add_one(x: i32) -> i32 {
-	x + 1
+    x + 1
 }

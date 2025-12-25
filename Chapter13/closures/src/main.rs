@@ -25,8 +25,7 @@ impl Inventory {
         }
         if num_red > num_blue {
             ShirtColor::Red
-        }
-        else {
+        } else {
             ShirtColor::Blue
         }
     }
@@ -52,7 +51,7 @@ fn main() {
 
     println!("The user with preference {user_pref2:?} gets {giveaway2:?}");
 
-    let expensive_closure = |num : u32| -> u32 {
+    let expensive_closure = |num: u32| -> u32 {
         println!("Calculating slowly...");
         thread::sleep(Duration::from_secs(2));
         num
@@ -61,14 +60,16 @@ fn main() {
     let two_but_slow = expensive_closure(2);
     println!("Calling the closure: {two_but_slow}");
 
-    fn add_one_v1 (x: u32) -> u32 {x + 1}
+    fn add_one_v1(x: u32) -> u32 {
+        x + 1
+    }
     let add_one_v2 = |x: u32| -> u32 { x + 1 };
-    let add_one_v3 = |x: u32| {x + 1};
+    let add_one_v3 = |x: u32| x + 1;
     let add_one_v4 = |x: u32| x + 1;
 
     let example_closure = |x| x;
 
-    // This first call of the closure 'locks in' the 
+    // This first call of the closure 'locks in' the
     // closure's input type to strings
     let s = example_closure(String::from("hello"));
     // This second call is erroneous as a result
@@ -90,12 +91,23 @@ fn main() {
     borrows_mutably();
     println!("After calling closure: {list:?}");
 
-    thread::spawn(move || println!("From thread: {list:?}")).join().unwrap();
+    thread::spawn(move || println!("From thread: {list:?}"))
+        .join()
+        .unwrap();
 
     let mut rectangle_list = [
-        Rectangle { width: 10, height: 1},
-        Rectangle { width: 3, height: 5},
-        Rectangle { width: 7, height: 12},
+        Rectangle {
+            width: 10,
+            height: 1,
+        },
+        Rectangle {
+            width: 3,
+            height: 5,
+        },
+        Rectangle {
+            width: 7,
+            height: 12,
+        },
     ];
 
     // let mut sort_operations = vec![];
