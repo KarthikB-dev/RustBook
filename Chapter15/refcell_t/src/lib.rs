@@ -46,7 +46,7 @@ mod tests {
     use std::cell::RefCell;
 
     struct MockMessenger {
-        sent_messages: Vec<String>,
+        sent_messages: RefCell<Vec<String>>,
     }
 
     impl MockMessenger {
@@ -59,8 +59,9 @@ mod tests {
 
     impl Messenger for MockMessenger {
         fn send(&self, message: &str) {
-            let mut one_borrow = self.sent_messages.borrow_mut();
-            let mut two_borrow = self.sent_messages.borrow_mut();
+            // Disallowed - we can't have multiple mutable borrows!
+            // let mut one_borrow = self.sent_messages.borrow_mut();
+            // let mut two_borrow = self.sent_messages.borrow_mut();
             // Disallowed because this requires a mutable reference!
             // We don't want to make Messenger mutable solely for the sake
             // of testing. So we'll use interior mutability!
@@ -75,6 +76,8 @@ mod tests {
 
         limit_tracker.set_value(80);
 
-        assert_eq!(mock_messenger.sent_messages.len(), 1);
+        println!("Num borrowed: {}", mock_messenger.sent_messages.borrow().len());
+
+        assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
     }
 }
