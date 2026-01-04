@@ -60,6 +60,7 @@ fn main() {
     // because these references are strong, whereas weak references don't 
     // increase reference count.
 
+    println!("--------------------------");
     // Leak free code:
     let leaf = Rc::new(Node {
         value: 3,
@@ -67,17 +68,43 @@ fn main() {
         parent: RefCell::new(Weak::new()),
     });
 
+    println!(
+            "leaf strong = {}, weak = {}",
+            Rc::strong_count(&leaf),
+            Rc::weak_count(&leaf),
+    );
+
     println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
     
-    // branch = 5 - > [leaf]
-    // leaf = 3 -> []
-    let branch = Rc::new(Node {
-        value: 5,
-        children: RefCell::new(vec![Rc::clone(&leaf)]),
-        parent: RefCell::new(Weak::new()),
-    });
+    {
+        // branch = 5 - > [leaf]
+        // leaf = 3 -> []
+        let branch = Rc::new(Node {
+            value: 5,
+            children: RefCell::new(vec![Rc::clone(&leaf)]),
+            parent: RefCell::new(Weak::new()),
+        });
 
-    // Makes the reference weak
-    *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+        // Makes the reference weak
+        *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+
+        println!(
+            "branch strong = {}, weak = {}",
+            Rc::strong_count(&branch),
+            Rc::weak_count(&branch),
+        );
+
+        println!(
+            "leaf strong = {}, weak = {}",
+            Rc::strong_count(&leaf),
+            Rc::weak_count(&leaf),
+        );
+    }
+
     println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+    println!(
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf),
+    )
 }
