@@ -10,10 +10,10 @@ impl Drop for CustomSmartPointer {
 
 fn main() {
     let first = CustomSmartPointer {
-        data : String::from("Smart pointer 1")
+        data: String::from("Smart pointer 1"),
     };
     let second = CustomSmartPointer {
-        data : String::from("Smart pointer 2")
+        data: String::from("Smart pointer 2"),
     };
     println!("Two smart pointers created!");
     // Explicit destructor calls are forbidden

@@ -30,12 +30,12 @@ where
 
         if percentage_of_max >= 1.0 {
             self.messenger.send("Your quota has been reached!");
-        }
-        else if percentage_of_max >= 0.9 {
-            self.messenger.send("You've used at least 90 percent of your quota!");
-        }
-        else if percentage_of_max >= 0.75 {
-            self.messenger.send("You've used at least 75 percent of your quota!");
+        } else if percentage_of_max >= 0.9 {
+            self.messenger
+                .send("You've used at least 90 percent of your quota!");
+        } else if percentage_of_max >= 0.75 {
+            self.messenger
+                .send("You've used at least 75 percent of your quota!");
         }
     }
 }
@@ -76,7 +76,10 @@ mod tests {
 
         limit_tracker.set_value(80);
 
-        println!("Num borrowed: {}", mock_messenger.sent_messages.borrow().len());
+        println!(
+            "Num borrowed: {}",
+            mock_messenger.sent_messages.borrow().len()
+        );
 
         assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
     }

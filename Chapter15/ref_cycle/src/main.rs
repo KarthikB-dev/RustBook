@@ -41,7 +41,7 @@ fn main() {
     println!("a rc count after b creation = {}", Rc::strong_count(&a));
     println!("b initial rc count = {}", Rc::strong_count(&b));
     println!("b next item = {:?}", b.tail());
-    
+
     // Make a's tail point to b
     // a = [5, b]
     if let Some(link) = a.tail() {
@@ -57,7 +57,7 @@ fn main() {
     // a -> 5 -> b
     // b -> 10 -> a
     // This program causes a memory leak.
-    // because these references are strong, whereas weak references don't 
+    // because these references are strong, whereas weak references don't
     // increase reference count.
 
     println!("--------------------------");
@@ -69,13 +69,13 @@ fn main() {
     });
 
     println!(
-            "leaf strong = {}, weak = {}",
-            Rc::strong_count(&leaf),
-            Rc::weak_count(&leaf),
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf),
     );
 
     println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
-    
+
     {
         // branch = 5 - > [leaf]
         // leaf = 3 -> []

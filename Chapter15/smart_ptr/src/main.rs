@@ -10,7 +10,6 @@ impl<T> MyBox<T> {
     fn new(x: T) -> MyBox<T> {
         MyBox(x)
     }
-
 }
 
 impl<T> Deref for MyBox<T> {
