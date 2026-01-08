@@ -1,4 +1,5 @@
 use std::{thread, time::Duration};
+use trpl::Either;
 
 fn slow(name: &str, ms: u64) {
     thread::sleep(Duration::from_millis(ms));
@@ -91,6 +92,33 @@ fn async_concurrency() {
     });
 }
 
+// If the future takes longer than max time, return an error
+async fn timeout<F: Future>(future_to_try: F, max_time: Duration) -> Result<F::Output, Duration> {
+    match trpl::select(future_to_try, trpl::sleep(max_time)).await {
+        Either::Left(output) => Ok(output),
+        Either::Right(_) => Err(max_time),
+    }
+}
+
+fn try_future() {
+    trpl::block_on(async {
+    // Closure, returns the string after waiting
+    let slow = async {
+        // Customize the duration to determine whether the function fails 
+        // or passes
+        trpl::sleep(Duration::from_secs(5)).await;
+        "Finally finished"
+    };
+    match timeout(slow, Duration::from_secs(2)).await {
+        Ok(message) => println!("Succeeded with '{message}'"),
+        Err(duration) => {
+            println!("Failed after {} seconds", duration.as_secs())
+        }
+
+    }});
+}
+
 fn main() {
-   async_concurrency(); 
+    // async_concurrency(); 
+    try_future();
 }
