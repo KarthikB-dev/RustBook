@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "any_number_features"
+name = "any_number_futures"
 version = "0.1.0"
 dependencies = [
  "trpl",
